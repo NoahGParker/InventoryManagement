@@ -1,5 +1,6 @@
 package com.example.demo.bootstrap;
 
+import com.example.demo.domain.InhousePart;
 import com.example.demo.domain.OutsourcedPart;
 import com.example.demo.domain.Part;
 import com.example.demo.domain.Product;
@@ -38,6 +39,88 @@ public class BootStrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        InhousePart intel_Cpu = new InhousePart();
+        intel_Cpu.setName("Intel Cpu");
+        intel_Cpu.setPrice(250.00);
+        intel_Cpu.setInv(10);
+        InhousePart amd_Cpu = new InhousePart();
+        amd_Cpu.setName("Amd Cpu");
+        amd_Cpu.setPrice(180.00);
+        amd_Cpu.setInv(6);
+
+
+        InhousePart evga_Video_card = new InhousePart();
+        evga_Video_card.setName("Evga Video Card");
+        evga_Video_card.setPrice(400.00);
+        evga_Video_card.setInv(15);
+
+
+        InhousePart asus_Video_card = new InhousePart();
+        asus_Video_card.setName("Asus Video Card");
+        asus_Video_card.setPrice(500.00);
+        asus_Video_card.setInv(4);
+
+
+        InhousePart corsair_Ram_8GB = new InhousePart();
+        corsair_Ram_8GB.setName("Corsair Ram 8GB");
+        corsair_Ram_8GB.setPrice(89.00);
+        corsair_Ram_8GB.setInv(30);
+
+
+        OutsourcedPart evga_power_supply = new OutsourcedPart();
+        evga_power_supply.setId(10);
+        evga_power_supply.setInv(5);
+        evga_power_supply.setPrice(75.00);
+        evga_power_supply.setName("Evga Power Supply");
+        evga_power_supply.setCompanyName("EVGA 3rd party supplier");
+
+
+        OutsourcedPart asus_power_supply = new OutsourcedPart();
+        asus_power_supply.setId(11);
+        asus_power_supply.setInv(15);
+        asus_power_supply.setPrice(99.00);
+        asus_power_supply.setName("Asus Power Supply");
+        asus_power_supply.setCompanyName("Asus 3rd party supplier");
+
+
+        OutsourcedPart asus_motherboard = new OutsourcedPart();
+        asus_motherboard.setId(12);
+        asus_motherboard.setInv(5);
+        asus_motherboard.setPrice(225.00);
+        asus_motherboard.setName("Asus Motherboard Supply");
+        asus_motherboard.setCompanyName("Asus 3rd party supplier");
+
+
+        OutsourcedPart msi_motherboard = new OutsourcedPart();
+        msi_motherboard.setId(13);
+        msi_motherboard.setInv(12);
+        msi_motherboard.setPrice(299.00);
+        msi_motherboard.setName("MSI Motherboard ");
+        msi_motherboard.setCompanyName("MSI 3rd party supplier");
+
+
+
+        OutsourcedPart intel_Ram_16GB = new OutsourcedPart();
+        intel_Ram_16GB.setId(14);
+        intel_Ram_16GB.setInv(20);
+        intel_Ram_16GB.setPrice(125.00);
+        intel_Ram_16GB.setName("Intel Ram 16GB");
+        intel_Ram_16GB.setCompanyName("Intel 3rd party supplier");
+
+
+        if(partRepository.count() == 0) {
+            partRepository.save(intel_Cpu);
+            partRepository.save(amd_Cpu);
+            partRepository.save(evga_Video_card);
+            partRepository.save(asus_Video_card);
+            partRepository.save(corsair_Ram_8GB);
+            partRepository.save(evga_power_supply);
+            partRepository.save(asus_power_supply);
+            partRepository.save(asus_motherboard);
+            partRepository.save(msi_motherboard);
+            partRepository.save(intel_Ram_16GB);
+
+        }
 
        /*
         OutsourcedPart o= new OutsourcedPart();
@@ -66,6 +149,20 @@ public class BootStrapData implements CommandLineRunner {
         productRepository.save(bicycle);
         productRepository.save(unicycle);
         */
+        Product chromebook = new Product (100, "Chrome Book", 299.00, 5);
+        Product macbook = new Product (101, "Macbook", 1899.00, 15);
+        Product gaming_pc_asus = new Product (102, "Gaming pc with Asus parts", 1299.00, 5);
+        Product gaming_pc_msi = new Product (103, "Gaming pc with MSI parts", 2599.00, 3);
+        Product desktop_home = new Product (104, "Desktop for basic home actvities", 599.00, 20);
+
+
+        if(productRepository.count() == 0) {
+            productRepository.save(chromebook);
+            productRepository.save(macbook);
+            productRepository.save(gaming_pc_asus);
+            productRepository.save(gaming_pc_msi);
+            productRepository.save(desktop_home);
+        }
 
         System.out.println("Started in Bootstrap");
         System.out.println("Number of Products"+productRepository.count());
