@@ -43,29 +43,36 @@ public class BootStrapData implements CommandLineRunner {
         intel_Cpu.setName("Intel Cpu");
         intel_Cpu.setPrice(250.00);
         intel_Cpu.setInv(10);
+        intel_Cpu.setMinInventory(1);
+        intel_Cpu.setMaxInventory(30);
+
         InhousePart amd_Cpu = new InhousePart();
         amd_Cpu.setName("Amd Cpu");
         amd_Cpu.setPrice(180.00);
         amd_Cpu.setInv(6);
-
+        amd_Cpu.setMinInventory(1);
+        amd_Cpu.setMaxInventory(30);
 
         InhousePart evga_Video_card = new InhousePart();
         evga_Video_card.setName("Evga Video Card");
         evga_Video_card.setPrice(400.00);
         evga_Video_card.setInv(15);
-
+        evga_Video_card.setMinInventory(1);
+        evga_Video_card.setMaxInventory(30);
 
         InhousePart asus_Video_card = new InhousePart();
         asus_Video_card.setName("Asus Video Card");
         asus_Video_card.setPrice(500.00);
         asus_Video_card.setInv(4);
-
+        asus_Video_card.setMinInventory(1);
+        asus_Video_card.setMaxInventory(30);
 
         InhousePart corsair_Ram_8GB = new InhousePart();
         corsair_Ram_8GB.setName("Corsair Ram 8GB");
         corsair_Ram_8GB.setPrice(89.00);
         corsair_Ram_8GB.setInv(30);
-
+        corsair_Ram_8GB.setMinInventory(1);
+        corsair_Ram_8GB.setMaxInventory(30);
 
         OutsourcedPart evga_power_supply = new OutsourcedPart();
         evga_power_supply.setId(10);
@@ -73,7 +80,8 @@ public class BootStrapData implements CommandLineRunner {
         evga_power_supply.setPrice(75.00);
         evga_power_supply.setName("Evga Power Supply");
         evga_power_supply.setCompanyName("EVGA 3rd party supplier");
-
+        evga_power_supply.setMinInventory(1);
+        evga_power_supply.setMaxInventory(30);
 
         OutsourcedPart asus_power_supply = new OutsourcedPart();
         asus_power_supply.setId(11);
@@ -81,7 +89,8 @@ public class BootStrapData implements CommandLineRunner {
         asus_power_supply.setPrice(99.00);
         asus_power_supply.setName("Asus Power Supply");
         asus_power_supply.setCompanyName("Asus 3rd party supplier");
-
+        asus_power_supply.setMinInventory(1);
+        asus_power_supply.setMaxInventory(30);
 
         OutsourcedPart asus_motherboard = new OutsourcedPart();
         asus_motherboard.setId(12);
@@ -89,7 +98,8 @@ public class BootStrapData implements CommandLineRunner {
         asus_motherboard.setPrice(225.00);
         asus_motherboard.setName("Asus Motherboard Supply");
         asus_motherboard.setCompanyName("Asus 3rd party supplier");
-
+        asus_motherboard.setMinInventory(1);
+        asus_motherboard.setMaxInventory(30);
 
         OutsourcedPart msi_motherboard = new OutsourcedPart();
         msi_motherboard.setId(13);
@@ -97,7 +107,8 @@ public class BootStrapData implements CommandLineRunner {
         msi_motherboard.setPrice(299.00);
         msi_motherboard.setName("MSI Motherboard ");
         msi_motherboard.setCompanyName("MSI 3rd party supplier");
-
+        msi_motherboard.setMinInventory(1);
+        msi_motherboard.setMaxInventory(30);
 
 
         OutsourcedPart intel_Ram_16GB = new OutsourcedPart();
@@ -106,7 +117,8 @@ public class BootStrapData implements CommandLineRunner {
         intel_Ram_16GB.setPrice(125.00);
         intel_Ram_16GB.setName("Intel Ram 16GB");
         intel_Ram_16GB.setCompanyName("Intel 3rd party supplier");
-
+        intel_Ram_16GB.setMinInventory(1);
+        intel_Ram_16GB.setMaxInventory(30);
 
         if(partRepository.count() == 0) {
             partRepository.save(intel_Cpu);

@@ -3,6 +3,7 @@ package com.example.demo.domain;
 import com.example.demo.validators.ValidDeletePart;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -26,8 +27,11 @@ public abstract class Part implements Serializable {
     String name;
     @Min(value = 0, message = "Price value must be positive")
     double price;
-    @Min(value = 0, message = "Inventory value must be positive")
+    static Integer minInventory = 0;
+    @Min(value = 1, message = "Inventory value must be greater than 1")
     int inv;
+    @Max(value =30, message="Too much inventory sitting around already")
+    static Integer maxInventory = 30;
 
     @ManyToMany
     @JoinTable(name="product_part", joinColumns = @JoinColumn(name="part_id"),
@@ -37,10 +41,12 @@ public abstract class Part implements Serializable {
     public Part() {
     }
 
-    public Part(String name, double price, int inv) {
+    public Part(String name, double price, int inv,int minInventory, int maxInventory) {
         this.name = name;
         this.price = price;
         this.inv = inv;
+        this.minInventory = minInventory;
+        this.maxInventory = maxInventory;
     }
 
     public Part(long id, String name, double price, int inv) {
@@ -88,6 +94,21 @@ public abstract class Part implements Serializable {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+    public void setMinInventory(Integer inv) { this.minInventory = inv; }
+    public Integer getMinInventory() { return minInventory; }
+    public void setMaxInventory(Integer maxInventory) {
+        this.maxInventory = maxInventory;
+    }
+
+    public Integer getMaxInventory() {
+        return maxInventory;
+    }
+    public static boolean invIsValid(int inv) {
+        if(inv >= minInventory && inv <= maxInventory) {
+            return true;
+        }
+        else { return false; }
     }
 
     public String toString(){
